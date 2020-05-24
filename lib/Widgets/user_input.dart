@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weeklyplanner/Model/TaskModel.dart';
 import 'package:weeklyplanner/Widgets/task_list.dart';
 
-//adding a comment
 
 class UserInput extends StatefulWidget {
   @override
