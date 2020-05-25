@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
                   child: Text("Card"),
                 ),
               ),
-              UserInput(),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: UserInput(),
+              ),
             ],
           ),
         ),

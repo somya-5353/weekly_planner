@@ -12,7 +12,6 @@ class CustomTask extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      padding: EdgeInsets.all(20),
       child: Card(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

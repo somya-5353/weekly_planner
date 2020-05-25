@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weeklyplanner/Model/TaskModel.dart';
 import 'package:weeklyplanner/Widgets/task_list.dart';
 
-
 class UserInput extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -25,6 +24,12 @@ class _UserInputState extends State<UserInput> {
     });
   }
 
+  void _checkSubmitData() {
+    if (nameController.text != "" && dayController.text != "") {
+      _updateTaskList();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -42,6 +47,7 @@ class _UserInputState extends State<UserInput> {
                       decoration:
                           InputDecoration(labelText: 'Enter the task title'),
                       controller: nameController,
+                      onSubmitted: ((_) => _checkSubmitData),
                     ),
                   ),
                   Padding(
@@ -49,6 +55,7 @@ class _UserInputState extends State<UserInput> {
                     child: TextField(
                       controller: dayController,
                       decoration: InputDecoration(labelText: 'Enter the day'),
+                      onSubmitted: (_) => _checkSubmitData,
                     ),
                   ),
                   FlatButton(
@@ -59,7 +66,7 @@ class _UserInputState extends State<UserInput> {
                         style: TextStyle(color: Colors.redAccent),
                       ),
                     ),
-                    onPressed: _updateTaskList,
+                    onPressed: _checkSubmitData,
                   )
                 ],
               ),
