@@ -12,21 +12,16 @@ class UserInput extends StatefulWidget {
 
 class _UserInputState extends State<UserInput> {
   List<TaskModel> tasklist = [];
-  final nameController = TextEditingController();
-  final dayController = TextEditingController();
 
-  void _updateTaskList() {
+  void _updateTaskList(String name, String day) {
     setState(() {
-      tasklist.add(
-          TaskModel(name: nameController.text, dayOfWeek: dayController.text));
-      nameController.text = '';
-      dayController.text = '';
+      tasklist.add(TaskModel(name: name, dayOfWeek: day));
     });
   }
 
-  void _checkSubmitData() {
-    if (nameController.text != "" && dayController.text != "") {
-      _updateTaskList();
+  void _checkSubmitData(String name, String day) {
+    if (name != "" && day != "") {
+      _updateTaskList(name, day);
     }
   }
 
@@ -36,42 +31,6 @@ class _UserInputState extends State<UserInput> {
     return Container(
       child: Column(
         children: <Widget>[
-          Container(
-            child: Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      decoration:
-                          InputDecoration(labelText: 'Enter the task title'),
-                      controller: nameController,
-                      onSubmitted: ((_) => _checkSubmitData),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: dayController,
-                      decoration: InputDecoration(labelText: 'Enter the day'),
-                      onSubmitted: (_) => _checkSubmitData,
-                    ),
-                  ),
-                  FlatButton(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Add Task',
-                        style: TextStyle(color: Colors.redAccent),
-                      ),
-                    ),
-                    onPressed: _checkSubmitData,
-                  )
-                ],
-              ),
-            ),
-          ),
           Container(
             height: 500,
             child: TaskList(tasklist),

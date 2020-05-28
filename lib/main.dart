@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import './Widgets/user_input.dart';
 import 'Model/TaskModel.dart';
+import 'Widgets/make_user_input_sheet.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyHome());
+
+class MyHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      home: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   List<TaskModel> tasklist = [];
@@ -10,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
+    return new MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Weekly Planner'),
@@ -34,6 +45,17 @@ class MyApp extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => Container(
+                child: MakeUserInputSheet(),
+              ),
+            );
+          },
         ),
       ),
     );
