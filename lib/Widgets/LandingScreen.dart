@@ -24,10 +24,11 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
+      title: "Weekly Planner",
+      theme: ThemeData(primarySwatch: Colors.deepOrange),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Weekly Planner'),
-          backgroundColor: Colors.redAccent,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -61,7 +62,6 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          backgroundColor: Colors.redAccent,
           onPressed: () {
             showModalBottomSheet(
               context: context,

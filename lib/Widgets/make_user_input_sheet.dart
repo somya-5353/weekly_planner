@@ -58,7 +58,7 @@ class _MakeUserInputSheetState extends State<MakeUserInputSheet> {
                   alignment: Alignment.centerRight,
                   child: Text(
                     'Add Task',
-                    style: TextStyle(color: Colors.redAccent),
+                    style: TextStyle(color: Colors.deepOrange),
                   ),
                 ),
                 onPressed: _checkSubmitData,

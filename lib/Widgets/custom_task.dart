@@ -12,18 +12,23 @@ class CustomTask extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
+      height: 70,
       child: Card(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10),
+              height: 50,
+              width: 50,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.all(20),
               decoration: BoxDecoration(
+                border: Border.all(color: Colors.orangeAccent),
                 shape: BoxShape.circle,
-                color: Colors.redAccent,
               ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(taskitem.name),
                 Text(taskitem.dayOfWeek),
