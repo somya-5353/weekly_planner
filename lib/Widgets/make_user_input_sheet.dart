@@ -14,14 +14,15 @@ class MakeUserInputSheet extends StatefulWidget {
 
 class _MakeUserInputSheetState extends State<MakeUserInputSheet> {
   final nameController = TextEditingController();
-  final dayController = TextEditingController();
   final Function _completionHandler;
+
+  String _chosenValue = 'Monday';
 
   _MakeUserInputSheetState(this._completionHandler);
 
   void _checkSubmitData() {
-    if (nameController.text != "" && dayController.text != "") {
-      _completionHandler(nameController.text, dayController.text);
+    if (nameController.text != "") {
+      _completionHandler(nameController.text, _chosenValue);
       Navigator.of(context).pop();
     }
   }
@@ -47,10 +48,27 @@ class _MakeUserInputSheetState extends State<MakeUserInputSheet> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: dayController,
-                  decoration: InputDecoration(labelText: 'Enter the day'),
-                  onSubmitted: (_) => _checkSubmitData(),
+                child: DropdownButton<String>(
+                  value: _chosenValue,
+                  items: <String>[
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                    'Sunday'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String value) {
+                    setState(() {
+                      _chosenValue = value;
+                    });
+                  },
                 ),
               ),
               FlatButton(
