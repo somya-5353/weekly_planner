@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -18,20 +20,44 @@ class CustomTask extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: 50,
-              width: 50,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.fromLTRB(20, 10, 100, 10),
+              margin: EdgeInsets.fromLTRB(20, 0, 40, 0),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.orangeAccent),
+                border: Border.all(
+                  color: Colors.redAccent,
+                  width: 2.0,
+                ),
                 shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(85, 5, 5, 5),
+                child: new Text(
+                  'hello',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(taskitem.name),
-                Text(taskitem.dayOfWeek),
+                Text(
+                  taskitem.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  taskitem.dayOfWeek,
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 10,
+                    color: Colors.redAccent,
+                  ),
+                ),
               ],
             ),
           ],
