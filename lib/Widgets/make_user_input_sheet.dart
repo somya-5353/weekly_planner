@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class MakeUserInputSheet extends StatefulWidget {
   final Function _completionHandler;
+
   MakeUserInputSheet(this._completionHandler);
 
   @override

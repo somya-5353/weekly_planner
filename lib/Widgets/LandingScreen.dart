@@ -22,6 +22,14 @@ class _LandingScreenState extends State<LandingScreen> {
     });
   }
 
+  void deleteItem(String name) {
+    setState(() {
+      tasklist.removeWhere((tx) {
+        return tx.name == name;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -52,7 +60,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       children: <Widget>[
                         Container(
                           height: 500,
-                          child: TaskList(tasklist, daySelected),
+                          child: TaskList(tasklist, daySelected, deleteItem),
                         ),
                       ],
                     ),
