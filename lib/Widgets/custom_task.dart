@@ -7,55 +7,51 @@ import 'package:weeklyplanner/Model/TaskModel.dart';
 
 class CustomTask extends StatelessWidget {
   final TaskModel taskitem;
+  final String dayOfWeek;
 
-  CustomTask({@required this.taskitem});
+  CustomTask({@required this.taskitem, @required this.dayOfWeek});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      height: 70,
+      height: 100,
       child: Card(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(20, 10, 100, 10),
-              margin: EdgeInsets.fromLTRB(20, 0, 40, 0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.redAccent,
-                  width: 2.0,
-                ),
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(85, 5, 5, 5),
-                child: new Text(
-                  'hello',
-                  style: TextStyle(
-                    fontSize: 20,
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.all(10),
+                child: CircleAvatar(
+                  backgroundColor: Colors.redAccent,
+                  radius: 40,
+                  child: Text(
+                    dayOfWeek.substring(0, 3),
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
+                )),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   taskitem.name,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
-                Text(
-                  taskitem.dayOfWeek,
-                  style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 10,
-                    color: Colors.redAccent,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  child: Text(
+                    taskitem.dayOfWeek,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 10,
+                      color: Colors.blueGrey,
+                    ),
                   ),
                 ),
               ],

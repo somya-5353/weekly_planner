@@ -13,10 +13,12 @@ class LandingScreen extends StatefulWidget {
 
 class _LandingScreenState extends State<LandingScreen> {
   List<TaskModel> tasklist = [];
+  var daySelected = 'Monday';
 
   void _updateTaskList(String name, String day) {
     setState(() {
       tasklist.add(TaskModel(name: name, dayOfWeek: day));
+      daySelected = day;
     });
   }
 
@@ -50,7 +52,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       children: <Widget>[
                         Container(
                           height: 500,
-                          child: TaskList(tasklist),
+                          child: TaskList(tasklist, daySelected),
                         ),
                       ],
                     ),

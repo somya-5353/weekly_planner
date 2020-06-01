@@ -5,7 +5,8 @@ import 'custom_task.dart';
 
 class TaskList extends StatelessWidget {
   final List<TaskModel> tasklist;
-  TaskList(this.tasklist);
+  final String dayOfWeek;
+  TaskList(this.tasklist, this.dayOfWeek);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class TaskList extends StatelessWidget {
     return ListView.builder(
       itemCount: tasklist.length,
       itemBuilder: (BuildContext context, int index) {
-        return CustomTask(taskitem: tasklist[index]);
+        return CustomTask(taskitem: tasklist[index], dayOfWeek: dayOfWeek);
       },
     );
   }
