@@ -58,10 +58,37 @@ class _LandingScreenState extends State<LandingScreen> {
                   child: Container(
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          height: 500,
-                          child: TaskList(tasklist, daySelected, deleteItem),
-                        ),
+                        tasklist.length == 0
+                            ? Container(
+                                height: 500,
+                                child: Column(
+                                  children: <Widget>[
+                                    Center(
+                                      child: new Image.asset(
+                                          'assets/images/nothing.png',
+                                          width: 200,
+                                          height: 200),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.all(20),
+                                      padding: EdgeInsets.all(20),
+                                      child: Text(
+                                        'There are no plans listed!',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                height: 500,
+                                child:
+                                    TaskList(tasklist, daySelected, deleteItem),
+                              ),
                       ],
                     ),
                   ),
