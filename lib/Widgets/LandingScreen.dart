@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weeklyplanner/Model/TaskModel.dart';
 import 'package:weeklyplanner/Widgets/task_list.dart';
+import 'chart.dart';
 import 'make_user_input_sheet.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -46,11 +47,10 @@ class _LandingScreenState extends State<LandingScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  height: 300,
                   padding: EdgeInsets.all(20),
                   child: Card(
-                    color: Colors.teal,
-                    child: Text("Card"),
+                    elevation: 5,
+                    child: Chart(),
                   ),
                 ),
                 Container(

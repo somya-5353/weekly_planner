@@ -72,15 +72,20 @@ class _MakeUserInputSheetState extends State<MakeUserInputSheet> {
                   },
                 ),
               ),
-              FlatButton(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Add Task',
-                    style: TextStyle(color: Colors.deepOrange),
+              Container(
+                width: 200,
+                child: FlatButton(
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Add Task',
+                      style: TextStyle(color: Colors.deepOrange),
+                    ),
                   ),
+                  onPressed: _checkSubmitData,
                 ),
-                onPressed: _checkSubmitData,
               )
             ],
           ),
