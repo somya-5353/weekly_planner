@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'bar.dart';
 
 class Chart extends StatelessWidget {
+  final Map<String, int> TaskMap;
+
+  Chart(this.TaskMap);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -13,13 +17,13 @@ class Chart extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Bar(0.3, "2013"),
-            Bar(0.5, "2014"),
-            Bar(0.7, "2015"),
-            Bar(0.8, "2016"),
-            Bar(0.9, "2017"),
-            Bar(0.98, "2018"),
-            Bar(0.84, "2019"),
+            Bar(TaskMap['Monday'] / 10.0, "Mon"),
+            Bar(TaskMap['Tuesday'] / 10.0, "Tue"),
+            Bar(TaskMap['Wednesday'] / 10.0, "Wed"),
+            Bar(TaskMap['Thursday'] / 10.0, "Thu"),
+            Bar(TaskMap['Friday'] / 10.0, "Fri"),
+            Bar(TaskMap['Saturday'] / 10.0, "Sat"),
+            Bar(TaskMap['Sunday'] / 10.0, "Sun"),
           ],
         ),
       ),

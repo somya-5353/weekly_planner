@@ -37,7 +37,7 @@ class CustomTask extends StatelessWidget {
                   backgroundColor: Colors.redAccent,
                   radius: 40,
                   child: Text(
-                    dayOfWeek.substring(0, 3),
+                    taskitem.dayOfWeek.substring(0, 3),
                     style: TextStyle(
                       color: Colors.white,
                     ),

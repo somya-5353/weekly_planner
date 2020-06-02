@@ -15,11 +15,61 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   List<TaskModel> tasklist = [];
   var daySelected = 'Monday';
+  var taskMap = {
+    'Monday': 0,
+    'Tuesday': 0,
+    'Wednesday': 0,
+    'Thursday': 0,
+    'Friday': 0,
+    'Saturday': 0,
+    'Sunday': 0
+  };
+
+  void _populateChart() {
+    for (TaskModel task in tasklist) {
+      if (task.dayOfWeek == 'Monday') {
+        var val = taskMap['Monday'];
+        val = val + 1;
+        taskMap['Monday'] = val;
+      }
+      if (task.dayOfWeek == 'Tuesday') {
+        var val = taskMap['Tuesday'];
+        val = val + 1;
+        taskMap['Tuesday'] = val;
+      }
+      if (task.dayOfWeek == 'Wednesday') {
+        var val = taskMap['Wednesday'];
+        val = val + 1;
+        taskMap['Wednesday'] = val;
+      }
+      if (task.dayOfWeek == 'Thursday') {
+        var val = taskMap['Thursday'];
+        val = val + 1;
+        taskMap['Thursday'] = val;
+      }
+      if (task.dayOfWeek == 'Friday') {
+        var val = taskMap['Friday'];
+        val = val + 1;
+        taskMap['Friday'] = val;
+      }
+      if (task.dayOfWeek == 'Saturday') {
+        var val = taskMap['Saturday'];
+        val = val + 1;
+        taskMap['Saturday'] = val;
+      }
+      if (task.dayOfWeek == 'Sunday') {
+        var val = taskMap['Sunday'];
+        val = val + 1;
+        taskMap['Sunday'] = val;
+      }
+    }
+  }
 
   void _updateTaskList(String name, String day) {
     setState(() {
       tasklist.add(TaskModel(name: name, dayOfWeek: day));
       daySelected = day;
+      _populateChart();
     });
   }
 
@@ -50,7 +100,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   padding: EdgeInsets.all(20),
                   child: Card(
                     elevation: 5,
-                    child: Chart(),
+                    child: Chart(taskMap),
                   ),
                 ),
                 Container(
