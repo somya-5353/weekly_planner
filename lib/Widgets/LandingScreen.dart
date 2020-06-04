@@ -83,41 +83,53 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final app = AppBar(
+      title: Text('Weekly Planner'),
+    );
+
+    final double heightOfAppBar = app.preferredSize.height;
+
     // TODO: implement build
     return new MaterialApp(
       title: "Weekly Planner",
       theme: ThemeData(primarySwatch: Colors.deepOrange),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Weekly Planner'),
-        ),
+        appBar: app,
         body: SingleChildScrollView(
           child: Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
+                  height: (MediaQuery.of(context).size.height -
+                          app.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.4,
                   padding: EdgeInsets.all(20),
                   child: Card(
                     elevation: 5,
-                    child: Chart(taskMap),
+                    child: Chart(taskMap, heightOfAppBar),
                   ),
                 ),
                 Container(
+                  height: (MediaQuery.of(context).size.height -
+                          app.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.6,
                   padding: EdgeInsets.all(20),
                   child: Container(
                     child: Column(
                       children: <Widget>[
                         tasklist.length == 0
                             ? Container(
-                                height: 500,
                                 child: Column(
                                   children: <Widget>[
                                     Center(
                                       child: new Image.asset(
-                                          'assets/images/nothing.png',
-                                          width: 200,
-                                          height: 200),
+                                        'assets/images/nothing.png',
+                                        width: 200,
+                                        height: 200,
+                                      ),
                                     ),
                                     Container(
                                       margin: EdgeInsets.all(20),
@@ -135,7 +147,6 @@ class _LandingScreenState extends State<LandingScreen> {
                                 ),
                               )
                             : Container(
-                                height: 500,
                                 child:
                                     TaskList(tasklist, daySelected, deleteItem),
                               ),
