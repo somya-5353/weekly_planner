@@ -27,4 +27,9 @@ Landspace
 
 ![l2](https://user-images.githubusercontent.com/52540948/83878561-f7d3c400-a759-11ea-8a1f-1e60ef8484f1.png)
 
+Landscape(Bar Graph)
+
+![l1](https://user-images.githubusercontent.com/52540948/83878676-26ea3580-a75a-11ea-9b36-95617e2a349c.png)
+
+
 
