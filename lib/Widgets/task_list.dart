@@ -13,14 +13,16 @@ class TaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ListView.builder(
-      itemCount: tasklist.length,
-      itemBuilder: (BuildContext context, int index) {
-        return CustomTask(
-            taskitem: tasklist[index],
-            dayOfWeek: dayOfWeek,
-            deletionHandler: deletionHandler);
-      },
+    return Expanded(
+      child: ListView.builder(
+        itemCount: tasklist.length,
+        itemBuilder: (BuildContext context, int index) {
+          return CustomTask(
+              taskitem: tasklist[index],
+              dayOfWeek: dayOfWeek,
+              deletionHandler: deletionHandler);
+        },
+      ),
     );
   }
 }

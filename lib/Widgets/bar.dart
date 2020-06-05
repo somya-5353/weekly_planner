@@ -21,21 +21,11 @@ class Bar extends StatelessWidget {
         return Column(
           children: <Widget>[
             Container(
-              height: (1 - animatedHeight) *
-                  (((MediaQuery.of(context).size.height -
-                              heightOfAppBar -
-                              MediaQuery.of(context).padding.top) *
-                          0.4) *
-                      0.5),
+              height: (1 - animatedHeight) * _maxElementHeight,
             ),
             Container(
               width: 20,
-              height: animatedHeight *
-                  (((MediaQuery.of(context).size.height -
-                              heightOfAppBar -
-                              MediaQuery.of(context).padding.top) *
-                          0.4) *
-                      0.3),
+              height: animatedHeight * _maxElementHeight,
               color: Colors.redAccent,
             ),
             Text(label)

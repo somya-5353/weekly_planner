@@ -25,6 +25,8 @@ class _LandingScreenState extends State<LandingScreen> {
     'Sunday': 0
   };
 
+  bool _showBarGraph = false;
+
   void _populateChart() {
     for (TaskModel task in tasklist) {
       if (task.dayOfWeek == 'Monday') {
@@ -100,60 +102,76 @@ class _LandingScreenState extends State<LandingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  height: (MediaQuery.of(context).size.height -
-                          app.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.4,
-                  padding: EdgeInsets.all(20),
-                  child: Card(
-                    elevation: 5,
-                    child: Chart(taskMap, heightOfAppBar),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Display Bar Graph'),
+                    Switch(
+                      value: _showBarGraph,
+                      onChanged: (val) {
+                        setState(() {
+                          _showBarGraph = val;
+                          print(_showBarGraph);
+                        });
+                      },
+                    ),
+                  ],
                 ),
-                Container(
-                  height: (MediaQuery.of(context).size.height -
-                          app.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.6,
-                  padding: EdgeInsets.all(20),
-                  child: Container(
-                    child: Column(
-                      children: <Widget>[
-                        tasklist.length == 0
-                            ? Container(
-                                child: Column(
-                                  children: <Widget>[
-                                    Center(
-                                      child: new Image.asset(
-                                        'assets/images/nothing.png',
-                                        width: 200,
-                                        height: 200,
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.all(20),
-                                      padding: EdgeInsets.all(20),
-                                      child: Text(
-                                        'There are no plans listed!',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle: FontStyle.italic,
-                                        ),
+                _showBarGraph
+                    ? Container(
+                        height: (MediaQuery.of(context).size.height -
+                                app.preferredSize.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.4,
+                        padding: EdgeInsets.all(20),
+                        child: Card(
+                          elevation: 5,
+                          child: Chart(taskMap, heightOfAppBar),
+                        ),
+                      )
+                    : Container(
+                        height: (MediaQuery.of(context).size.height -
+                                app.preferredSize.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.6,
+                        padding: EdgeInsets.all(20),
+                        child: Container(
+                          child: Column(
+                            children: <Widget>[
+                              tasklist.length == 0
+                                  ? Container(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Center(
+                                            child: new Image.asset(
+                                              'assets/images/nothing.png',
+                                              width: 200,
+                                              height: 200,
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.all(20),
+                                            padding: EdgeInsets.all(20),
+                                            child: Text(
+                                              'There are no plans listed!',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     )
-                                  ],
-                                ),
-                              )
-                            : Container(
-                                child:
-                                    TaskList(tasklist, daySelected, deleteItem),
-                              ),
-                      ],
-                    ),
-                  ),
-                ),
+                                  : Container(
+                                      child: TaskList(
+                                          tasklist, daySelected, deleteItem),
+                                    ),
+                            ],
+                          ),
+                        ),
+                      ),
               ],
             ),
           ),
