@@ -90,6 +90,45 @@ class _LandingScreenState extends State<LandingScreen> {
     );
 
     final double heightOfAppBar = app.preferredSize.height;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
+    final taskdisplay = tasklist.length == 0
+        ? LayoutBuilder(builder: (ctx, constraints) {
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Center(
+                      child: new Image.asset(
+                        'assets/images/nothing.png',
+                        height: (MediaQuery.of(context).size.height -
+                                app.preferredSize.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.25,
+                        width: 150,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'There are no plans listed!',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          })
+        : Container(
+            child: TaskList(tasklist, daySelected, deleteItem),
+          );
 
     // TODO: implement build
     return new MaterialApp(
@@ -102,76 +141,68 @@ class _LandingScreenState extends State<LandingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Display Bar Graph'),
-                    Switch(
-                      value: _showBarGraph,
-                      onChanged: (val) {
-                        setState(() {
-                          _showBarGraph = val;
-                          print(_showBarGraph);
-                        });
-                      },
+                if (isLandscape)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Display Bar Graph'),
+                      Switch(
+                        value: _showBarGraph,
+                        onChanged: (val) {
+                          setState(() {
+                            _showBarGraph = val;
+                            print(_showBarGraph);
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                if (!isLandscape)
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: Card(
+                      elevation: 5,
+                      child: Chart(taskMap, heightOfAppBar),
                     ),
-                  ],
-                ),
-                _showBarGraph
-                    ? Container(
-                        height: (MediaQuery.of(context).size.height -
-                                app.preferredSize.height -
-                                MediaQuery.of(context).padding.top) *
-                            0.4,
-                        padding: EdgeInsets.all(20),
-                        child: Card(
-                          elevation: 5,
-                          child: Chart(taskMap, heightOfAppBar),
-                        ),
-                      )
-                    : Container(
-                        height: (MediaQuery.of(context).size.height -
-                                app.preferredSize.height -
-                                MediaQuery.of(context).padding.top) *
-                            0.6,
-                        padding: EdgeInsets.all(20),
-                        child: Container(
-                          child: Column(
-                            children: <Widget>[
-                              tasklist.length == 0
-                                  ? Container(
-                                      child: Column(
-                                        children: <Widget>[
-                                          Center(
-                                            child: new Image.asset(
-                                              'assets/images/nothing.png',
-                                              width: 200,
-                                              height: 200,
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.all(20),
-                                            padding: EdgeInsets.all(20),
-                                            child: Text(
-                                              'There are no plans listed!',
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w500,
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  : Container(
-                                      child: TaskList(
-                                          tasklist, daySelected, deleteItem),
-                                    ),
-                            ],
+                  ),
+                if (!isLandscape)
+                  Container(
+                    height: (MediaQuery.of(context).size.height -
+                            app.preferredSize.height -
+                            MediaQuery.of(context).padding.top) *
+                        0.5,
+                    padding: EdgeInsets.all(20),
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          taskdisplay,
+                        ],
+                      ),
+                    ),
+                  ),
+                if (isLandscape)
+                  _showBarGraph
+                      ? Container(
+                          padding: EdgeInsets.fromLTRB(20, 20, 50, 20),
+                          child: Card(
+                            elevation: 5,
+                            child: Chart(taskMap, heightOfAppBar),
+                          ),
+                        )
+                      : Container(
+                          height: (MediaQuery.of(context).size.height -
+                                  app.preferredSize.height -
+                                  MediaQuery.of(context).padding.top) *
+                              0.7,
+                          padding: EdgeInsets.all(20),
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                taskdisplay,
+                              ],
+                            ),
                           ),
                         ),
-                      ),
               ],
             ),
           ),
