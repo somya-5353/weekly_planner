@@ -19,3 +19,8 @@ Landing Screen (Potrait)
 
 ![landingScreenPotrait](https://user-images.githubusercontent.com/52540948/83878249-7845f500-a759-11ea-806f-05e4b93a23c6.png)
 
+Modal Bottom Sheet
+
+![p2](https://user-images.githubusercontent.com/52540948/83878371-b511ec00-a759-11ea-969a-355b0ecf42dd.png)
+
+
