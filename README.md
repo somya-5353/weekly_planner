@@ -31,5 +31,9 @@ Landscape(Bar Graph)
 
 ![l1](https://user-images.githubusercontent.com/52540948/83878676-26ea3580-a75a-11ea-9b36-95617e2a349c.png)
 
+No Plans screen
+
+![p1](https://user-images.githubusercontent.com/52540948/83878820-54cf7a00-a75a-11ea-8fa1-f0f2b74e6a9e.png)
+
 
 
